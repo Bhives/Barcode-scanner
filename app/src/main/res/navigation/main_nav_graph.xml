@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/scannerFragment">
+
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="com.reproflex3.rplink.presentation.scan.ScannerFragment"
+        android:label="fragment_scanner"
+        tools:layout="@layout/fragment_scanner">
+        <action
+            android:id="@+id/action_scannerFragment_to_requestPermissionsFragment"
+            app:destination="@id/requestPermissionsFragment" />
+        <action
+            android:id="@+id/action_scannerFragment_to_scanResultFragment"
+            app:destination="@id/scanResultFragment" />
+        <action
+            android:id="@+id/action_scannerFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/requestPermissionsFragment"
+        android:name="com.reproflex3.rplink.presentation.scan.RequestPermissionsFragment"
+        android:label="fragment_request_permissions"
+        tools:layout="@layout/fragment_request_permissions">
+        <action
+            android:id="@+id/action_requestPermissionsFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scanResultFragment"
+        android:name="com.reproflex3.rplink.presentation.scan.ScanResultFragment"
+        android:label="fragment_scan_result"
+        tools:layout="@layout/fragment_scan_result">
+        <action
+            android:id="@+id/action_scanResultFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.reproflex3.rplink.presentation.account.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_accountFragment2_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+
+    <include app:graph="@navigation/auth_nav_graph" />
+</navigation>

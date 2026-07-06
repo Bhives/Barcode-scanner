@@ -1,0 +1,2 @@
+json_key_file("google-api-secret.json")
+package_name("com.reproflex3.rplink")

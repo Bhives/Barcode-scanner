@@ -1,0 +1,116 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('cert/key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace 'com.reproflex3.rplink'
+    compileSdk 33
+
+    def appVersionCode = Integer.valueOf(System.env.BUILD_NUMBER ?: 10)
+    defaultConfig {
+        applicationId "com.reproflex3.rplink"
+        minSdk 26
+        targetSdk 33
+        versionCode appVersionCode
+        versionName "0.0." + appVersionCode
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildTypes.each {
+        it.buildConfigField "String", "BASE_URL", "$base_url"
+    }
+
+    if(keystorePropertiesFile.exists()){
+        signingConfigs {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                minifyEnabled true
+            }
+        }
+    } else {
+        //dev version
+        buildTypes {
+            release {
+                minifyEnabled false
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    ext.nav_version = '2.6.0'
+    ext.hilt_version = '2.47'
+    ext.retrofit_version = '2.9.0'
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    testImplementation 'junit:junit:4.13.2'
+
+    implementation "androidx.fragment:fragment-ktx:1.6.1"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+
+    implementation files('libs/dms.aar')
+    implementation 'com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+kapt {
+    correctErrorTypes true
+}
