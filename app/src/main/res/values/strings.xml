@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">i-printed</string>
+
+    <string name="scanning">Scanning</string>
+    <string name="account">Account</string>
+    <string name="smart_scan">Smart Scan</string>
+    <string name="qr_code">QR Code</string>
+    <string name="code_128">Code 128</string>
+    <string name="scanning_process">Scanning…</string>
+    <string name="no_match">No matches found with identifier: 0</string>
+
+    <string name="permission_title">No access to the camera/location</string>
+    <string name="permission_description">We need access to the camera and location for the app to work correctly. You can change the ‘i-printed’ access in the phone settings.</string>
+    <string name="allow_permissions">Allow use of camera and location</string>
+
+    <string name="welcome">Welcome</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="log_in">Log In</string>
+
+    <string name="email_empty_error">Email cannot be empty</string>
+    <string name="incorrect_email_format">Incorrect email format</string>
+    <string name="password_incorrect">Password must be min. 8 characters</string>
+
+    <string name="place_item">Place item in this box</string>
+    <string name="scan_result">Scan result</string>
+
+    <string name="log_out">Log out</string>
+
+    <string name="scan_result_message">Scan result: %s</string>
+</resources>

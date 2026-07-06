@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_40"
+        app:layout_constraintBottom_toTopOf="@id/topBorder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bottomView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottomBorder" />
+
+    <View
+        android:id="@+id/leftView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_40"
+        app:layout_constraintBottom_toTopOf="@id/bottomView"
+        app:layout_constraintEnd_toStartOf="@id/leftBorder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topView" />
+
+    <View
+        android:id="@+id/rightView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_40"
+        app:layout_constraintBottom_toTopOf="@id/bottomView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rightBorder"
+        app:layout_constraintTop_toBottomOf="@id/topView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/errorText"
+        style="@style/StatusTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red_50"
+        android:drawableStart="@drawable/ic_error"
+        android:drawablePadding="@dimen/size_10"
+        android:textAppearance="@style/TextAppearance.GolosMedium.16.White"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/scanFrame"
+        app:layout_constraintEnd_toEndOf="@id/scanFrame"
+        app:layout_constraintStart_toStartOf="@id/scanFrame" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomBorder"
+        app:layout_constraintEnd_toStartOf="@id/rightBorder"
+        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintTop_toBottomOf="@id/topBorder"
+        app:strokeColor="@color/black_40"
+        app:strokeWidth="@dimen/size_8" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/scanFrame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_40"
+        android:backgroundTint="@color/black_40"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@dimen/size_16"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomBorder"
+        app:layout_constraintEnd_toStartOf="@id/rightBorder"
+        app:layout_constraintStart_toEndOf="@id/leftBorder"
+        app:layout_constraintTop_toBottomOf="@id/topBorder"
+        app:strokeColor="@android:color/white"
+        app:strokeWidth="@dimen/size_8" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/statusText"
+        style="@style/StatusTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/place_item"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.GolosMedium.16.White"
+        app:layout_constraintEnd_toEndOf="@id/scanFrame"
+        app:layout_constraintStart_toStartOf="@id/scanFrame"
+        app:layout_constraintTop_toBottomOf="@id/scanFrame" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/statusIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_ok"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@id/statusText"
+        app:layout_constraintStart_toStartOf="@id/statusText"
+        app:layout_constraintTop_toTopOf="@id/statusText" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.76" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
+</androidx.constraintlayout.widget.ConstraintLayout>

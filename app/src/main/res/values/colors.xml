@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_gray">#F4F4F4</color>
+    <color name="black_40">#66000000</color>
+    <color name="red">#C10D10</color>
+    <color name="gray_70">#B2000000</color>
+    <color name="white_25">#40FFFFFF</color>
+    <color name="black_50">#80000000</color>
+    <color name="red_50">#80C10D10</color>
+
+    <color name="red_border">#F3CFCF</color>
+    <color name="green_border">#DFEBCE</color>
+</resources>

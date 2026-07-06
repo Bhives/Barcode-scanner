@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".RPLinkApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/crown_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Rplink"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="33">
+        <activity
+            android:name="com.reproflex3.rplink.presentation.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.digimarc.LicenseKey"
+            android:value="AtOcsAizR9U6qSlujJFOQmoppb2YQFwIqxHjiMlmDrrXzn+0RgR6Yy9f1bIzxmWDq9ey/jTfx7sGbS4154kdEdTynTOFB6tZhxd/zHYb6v4NQQfAaFhd24oSiNix66y1IuPQILT28/g1q7V4AF6eKcPM8B0YGMH7IHUZmlmM8pQ1rjaqsJENogzVgUuJcfiAc8EVejWp" />
+    </application>
+
+</manifest>

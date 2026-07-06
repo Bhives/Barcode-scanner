@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/size_16"
+    tools:context=".presentation.account.AccountFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:text="@string/account"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.GolosMedium.16" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        app:cardBackgroundColor="@color/light_gray"
+        app:cardCornerRadius="@dimen/size_8">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayout"
+            style="@style/InputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="19dp"
+            android:layout_marginVertical="24dp"
+            android:hint="@string/email"
+            app:endIconDrawable="@drawable/ic_lock"
+            app:endIconMode="custom"
+            app:hintTextAppearance="@style/TextAppearance.GolosRegular.12">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="none"
+                android:textAppearance="@style/TextAppearance.GolosRegular.16"
+                android:textColor="@android:color/black"
+                tools:text="example@mail.com" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logOutButton"
+        style="@style/ButtonOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="19dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/log_out" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,34 @@
+image: mingc/android-build-box
+
+pipelines:
+  custom:
+    deploy_android_alpha:
+    - step:
+        name: deploy android to alpha
+        size: 2x
+        caches:
+          - gradle
+          - gradle-wrapper
+        script:
+
+          - java -version
+          - mkdir -p cert
+
+          - export BUILD_NUMBER=$BITBUCKET_BUILD_NUMBER
+
+          - echo $ANDROID_KEY_PROPERTIES > cert/key.properties.base64
+          - base64 --decode --ignore-garbage cert/key.properties.base64 >cert/key.properties
+
+          - echo $ANDROID_UPLOAD_JKS > cert/RPLink.jks.base64
+          - base64 --decode --ignore-garbage cert/RPLink.jks.base64 > cert/RPLink.jks
+
+          - echo $GOOGLE_API_SECRET > google-api-secret.json.base64
+          - base64 --decode --ignore-garbage google-api-secret.json.base64 > google-api-secret.json
+
+          - bash gradlew clean bundleRelease
+
+          - fastlane alpha
+
+definitions:
+  caches:
+    gradle-wrapper: ~/.gradle/wrapper
